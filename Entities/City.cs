@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AppDevCodeChallange1.Models
+namespace AppDevCodeChallange1.Entities
 {
     public class City
     {
@@ -16,5 +16,6 @@ namespace AppDevCodeChallange1.Models
         public string District { get; set; }
 
         public int Population { get; set; }
+
     }
 }

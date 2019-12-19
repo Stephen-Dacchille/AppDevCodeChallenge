@@ -1,6 +1,6 @@
 using System;
 
-namespace AppDevCodeChallange1
+namespace AppDevCodeChallange1.Entities
 {
     public class WeatherForecast
     {
