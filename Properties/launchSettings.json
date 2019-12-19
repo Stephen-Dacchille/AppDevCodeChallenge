@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:51433",
-      "sslPort": 44367
+      "applicationUrl": "http://localhost:62513",
+      "sslPort": 44384
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CoreWebApiApplication1": {
+    "AppDevCodeChallange1": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

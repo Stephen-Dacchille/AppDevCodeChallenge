@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreWebApiApplication1
+namespace AppDevCodeChallange1
 {
     public class WeatherForecast
     {
