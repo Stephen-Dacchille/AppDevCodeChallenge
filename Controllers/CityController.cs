@@ -27,19 +27,18 @@ namespace AppDevCodeChallange1.Controllers
         [HttpGet]
         public IEnumerable<string> Get(string countryCode)
         {
-            
             IEnumerable<string> cityList = null;
             using (ApplicationDbContext context = new ApplicationDbContext(_contextOptions))
             {
                 IQueryable<City> cityQueryable = null;
                 if (string.IsNullOrEmpty(countryCode))
                 {
-                    cityQueryable = context.City.OrderBy(x => x.CountryCode);
+                    cityQueryable = context.City.Where(x => !string.IsNullOrEmpty(x.CountryCode)).OrderBy(x => x.CountryCode);
                 }
                 else
                 {
                     string cc = countryCode.ToLower();
-                    cityQueryable = context.City.Where(x => cc.Equals(x.CountryCode));
+                    cityQueryable = context.City.Where(x => !string.IsNullOrEmpty(x.CountryCode) && cc.Equals(x.CountryCode));
                 }
                 cityList = cityQueryable.Select(x => x.Name).ToList();
             }
