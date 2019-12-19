@@ -38,9 +38,9 @@ namespace AppDevCodeChallange1
 
             services.AddTransient<IAppSettings, AppSettings>();
 
-            services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySQL(new AppSettings().DbConnectionString));
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseMySQL(new AppSettings().DbConnectionString)) ;
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,6 +9,24 @@ namespace AppDevCodeChallange1
 {
     public class ApplicationDbContext : DbContext
     {
+        private readonly string _connectionString;
+
+        public virtual DbSet<City> City { get; set; }
+
+        public virtual DbSet<Country> Country { get; set; }
+
+        public virtual DbSet<CountryLanguage> CountryLanguage { get; set; }
+
+        public ApplicationDbContext(string connectionString)
+        {
+            _connectionString = connectionString;
+        }/**/
+
+        public ApplicationDbContext()
+        {
+            
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -19,14 +37,19 @@ namespace AppDevCodeChallange1
 
         }
 
-        public virtual DbSet<City> City { get; set; }
-
-        public virtual DbSet<Country> Country { get; set; }
-
-        public virtual DbSet<CountryLanguage> CountryLanguage { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySQL(_connectionString);
+            }/**/
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
             modelBuilder.Entity<City>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -40,18 +63,24 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.Name)
                     .IsRequired()
+                    .HasColumnName("Name")
+                    .HasColumnType("char(35)")
                     .HasMaxLength(35)
-                    .IsUnicode(false)
+                    .IsUnicode(true)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.CountryCode)
                     .IsRequired()
+                    .HasColumnName("CountryCode")
+                    .HasColumnType("char(3)")
                     .HasMaxLength(3)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.District)
                     .IsRequired()
+                    .HasColumnName("District")
+                    .HasColumnType("char(20)")
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
@@ -61,7 +90,7 @@ namespace AppDevCodeChallange1
                     .HasColumnName("Population")
                     .HasColumnType("int(11)");
             });
-
+            
             modelBuilder.Entity<Country>(entity =>
             {
                 entity.HasKey(e => e.Code);
@@ -70,24 +99,27 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.Code)
                     .IsRequired()
+                    .HasColumnType("char(3)")
                     .HasMaxLength(3)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
+                    .HasColumnType("char(52)")
                     .HasMaxLength(52)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Continent)
                     .IsRequired()
-                    .HasMaxLength(3)
+                    .HasColumnType("ENUM('Asia','Europe','North America', 'Africa', 'Oceania', 'Antarcita', 'South America')")
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Region)
                     .IsRequired()
+                    .HasColumnType("char(26)")
                     .HasMaxLength(26)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
@@ -115,17 +147,20 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.LocalName)
                     .IsRequired()
+                    .HasColumnType("char(45)")
                     .HasMaxLength(45)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.GovernmentForm)
                     .IsRequired()
+                    .HasColumnType("char(45)")
                     .HasMaxLength(45)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.HeadOfState)
+                    .HasColumnType("char(60)")
                     .HasMaxLength(60)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
@@ -136,6 +171,7 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.Code2)
                     .IsRequired()
+                    .HasColumnType("char(2)")
                     .HasMaxLength(2)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
@@ -151,27 +187,31 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.CountryCode)
                     .IsRequired()
+                    .HasColumnType("char(3)")
                     .HasMaxLength(3)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Language)
                     .IsRequired()
+                    .HasColumnType("char(30)")
                     .HasMaxLength(30)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.IsOfficial)
                     .IsRequired()
-                    .HasMaxLength(3)
+                    .HasColumnType("enum('T','F')")
+                    .HasMaxLength(1)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Percentage)
                     .IsRequired()
-                    .HasColumnType("float(4,1)").IsRequired();
+                    .HasColumnType("float(4,1)");
             });
-            base.OnModelCreating(modelBuilder);
+            
+            //base.OnModelCreating(modelBuilder);
         }
 
     }
