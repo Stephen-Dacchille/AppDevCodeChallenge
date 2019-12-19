@@ -19,7 +19,7 @@ namespace AppDevCodeChallange1.Entities
 
         public short IndepYear { get; set; }
 
-        public int Popluation { get; set; }
+        public int Population { get; set; }
 
         public float LifeExpectancy { get; set; }
 

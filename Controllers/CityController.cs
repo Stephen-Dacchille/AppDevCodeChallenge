@@ -23,14 +23,12 @@ namespace AppDevCodeChallange1.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new City
+            IEnumerable<string> cityList = null;
+            using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                context.City.OrderBy(x => x.CountryCode).ToList();
+            }
+            return cityList;
         }
     }
 }
