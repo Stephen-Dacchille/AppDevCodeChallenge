@@ -17,15 +17,15 @@ namespace AppDevCodeChallange1.Entities
 
         public float SurfaceArea { get; set; }
 
-        public short IndepYear { get; set; }
+        public short? IndepYear { get; set; }
 
         public int Population { get; set; }
 
-        public float LifeExpectancy { get; set; }
+        public float? LifeExpectancy { get; set; }
 
-        public float GNP { get; set; }
+        public float? GNP { get; set; }
 
-        public float GNPOld { get; set; }
+        public float? GNPOld { get; set; }
 
         public string LocalName { get; set; }
 
@@ -33,7 +33,7 @@ namespace AppDevCodeChallange1.Entities
 
         public string HeadOfState { get; set; }
 
-        public int Capitial { get; set; }
+        public int? Capital { get; set; }
 
         public string Code2 { get; set; }
     }

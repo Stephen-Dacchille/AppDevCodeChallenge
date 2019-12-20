@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AppDevCodeChallange1.Helpers;
 using AppDevCodeChallange1.Interfaces;
+using AppDevCodeChallange1.Services;
 
 namespace AppDevCodeChallange1
 {
@@ -37,6 +38,7 @@ namespace AppDevCodeChallange1
             });
 
             services.AddTransient<IAppSettings, AppSettings>();
+            services.AddTransient<IDataService, DataService>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySQL(new AppSettings().DbConnectionString));
 

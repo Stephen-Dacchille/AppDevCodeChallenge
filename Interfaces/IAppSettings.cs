@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AppDevCodeChallange1.Interfaces
 {
-    interface IAppSettings
+    public interface IAppSettings
     {
         string DbConnectionString { get; }
 

@@ -99,6 +99,7 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.Code)
                     .IsRequired()
+                    .HasColumnName("Code")
                     .HasColumnType("char(3)")
                     .HasMaxLength(3)
                     .IsUnicode(false)
@@ -106,6 +107,7 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.Name)
                     .IsRequired()
+                    .HasColumnName("Name")
                     .HasColumnType("char(52)")
                     .HasMaxLength(52)
                     .IsUnicode(false)
@@ -113,12 +115,14 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.Continent)
                     .IsRequired()
+                    .HasColumnName("Continent")
                     .HasColumnType("ENUM('Asia','Europe','North America', 'Africa', 'Oceania', 'Antarcita', 'South America')")
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Region)
                     .IsRequired()
+                    .HasColumnName("Region")
                     .HasColumnType("char(26)")
                     .HasMaxLength(26)
                     .IsUnicode(false)
@@ -126,9 +130,11 @@ namespace AppDevCodeChallange1
 
                 entity.Property(e => e.SurfaceArea)
                     .IsRequired()
+                    .HasColumnName("SurfaceArea")
                     .HasColumnType("float(10,2)");
 
                 entity.Property(e => e.IndepYear)
+                    .HasColumnName("IndepYear")
                     .HasColumnType("smallint(6)");
 
                 entity.Property(e => e.Population)
@@ -137,15 +143,19 @@ namespace AppDevCodeChallange1
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.LifeExpectancy)
+                    .HasColumnName("LifeExpectancy")
                     .HasColumnType("float(3,1)");
 
                 entity.Property(e => e.GNP)
+                    .HasColumnName("GNP")
                     .HasColumnType("float(10,2)");
 
                 entity.Property(e => e.GNPOld)
+                    .HasColumnName("GNPOld")
                     .HasColumnType("float(10,2)");
 
                 entity.Property(e => e.LocalName)
+                    .HasColumnName("LocalName")
                     .IsRequired()
                     .HasColumnType("char(45)")
                     .HasMaxLength(45)
@@ -153,6 +163,7 @@ namespace AppDevCodeChallange1
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.GovernmentForm)
+                    .HasColumnName("GovernmentForm")
                     .IsRequired()
                     .HasColumnType("char(45)")
                     .HasMaxLength(45)
@@ -160,17 +171,19 @@ namespace AppDevCodeChallange1
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.HeadOfState)
+                    .HasColumnName("HeadOfState")
                     .HasColumnType("char(60)")
                     .HasMaxLength(60)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Capitial)
-                    .HasColumnName("Capitial")
+                entity.Property(e => e.Capital)
+                    .HasColumnName("Capital")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Code2)
                     .IsRequired()
+                    .HasColumnName("Code2")
                     .HasColumnType("char(2)")
                     .HasMaxLength(2)
                     .IsUnicode(false)

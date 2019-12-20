@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "city",
       "environmentVariables": {
         "DB_CONNECTION_STRING": "server= appdevtesting.ceoujokqo18f.us-east-1.rds.amazonaws.com;port=3306;user= stephen;password= spdevproject!;database=world",
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,7 +21,7 @@
     "AppDevCodeChallange1": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "city",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

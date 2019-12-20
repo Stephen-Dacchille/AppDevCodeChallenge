@@ -6,30 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using AppDevCodeChallange1.Entities;
-using AppDevCodeChallange1.Helpers;
 using AppDevCodeChallange1.Interfaces;
 
 namespace AppDevCodeChallange1.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CityController : ControllerBase
+    public class CountriesController
     {
         private readonly IDataService _dataService;
+        private readonly ILogger<CountriesController> _logger;
 
-        private readonly ILogger<CityController> _logger;
-
-        public CityController(IDataService dataService, ILogger<CityController> logger)
+        public CountriesController(ILogger<CountriesController> logger, IDataService dataService)
         {
             _logger = logger;
             _dataService = dataService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<string>> Get(string countryCode)
+        public async Task<IEnumerable<Tuple<string, int>>> Get(string countryCode)
         {
-            IEnumerable<City> cities = await _dataService.GetCitiesFromCountryCode(countryCode);
-            return cities.Select(x => x.Name);
+            IEnumerable<Country> countries = await _dataService.GetCountriesFromCountryCode(countryCode);
+            return countries.Select(x => new Tuple<string, int>(x.Name, x.Population));
         }
+
     }
 }
