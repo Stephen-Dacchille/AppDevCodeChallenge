@@ -23,7 +23,7 @@ namespace AppDevCodeChallange1.Services
             IEnumerable<City> cities = null;
             using (ApplicationDbContext context = new ApplicationDbContext(_connectionString))
             {
-                if (string.IsNullOrEmpty(countryCode))
+                if (string.IsNullOrWhiteSpace(countryCode))
                 {
                     cities = await Task.FromResult(context.City.Where(x => !string.IsNullOrEmpty(x.CountryCode)).OrderBy(x => x.CountryCode).ToList());
                 }
@@ -41,7 +41,7 @@ namespace AppDevCodeChallange1.Services
             IEnumerable<Country> countries = null;
             using (ApplicationDbContext context = new ApplicationDbContext(_connectionString))
             {
-                if (string.IsNullOrEmpty(region))
+                if (string.IsNullOrWhiteSpace(region))
                 {
                     countries = await Task.FromResult(context.Country.Where(x => !string.IsNullOrEmpty(x.Region)).OrderBy(x => x.Region).ToList());
                 }
@@ -59,7 +59,7 @@ namespace AppDevCodeChallange1.Services
             IEnumerable<Country> countries = null;
             using (ApplicationDbContext context = new ApplicationDbContext(_connectionString))
             {
-                if (string.IsNullOrEmpty(countryCode))
+                if (string.IsNullOrWhiteSpace(countryCode))
                 {
                     countries = await Task.FromResult(context.Country.Where(x => !string.IsNullOrEmpty(x.Code)).OrderBy(x => x.Code).ToList());
                 }
